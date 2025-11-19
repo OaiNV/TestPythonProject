@@ -1,0 +1,43 @@
+{
+  "test_cases": [
+    {
+      "name": "test_load_config",
+      "description": "Test load_config function",
+      "input": {
+        "config_path": "config/config.json"
+      },
+      "expected_output": {
+        "app_name": "Test Docify",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "name": "test_process_data_dict",
+      "description": "Test process_data with dictionary input",
+      "input": {
+        "data": {
+          "key1": "value1",
+          "key2": "value2"
+        }
+      },
+      "expected_output": "Processed 2 items"
+    },
+    {
+      "name": "test_process_data_empty",
+      "description": "Test process_data with empty input",
+      "input": {
+        "data": null
+      },
+      "expected_output": "No data to process"
+    },
+    {
+      "name": "test_format_output",
+      "description": "Test format_output function",
+      "input": {
+        "text": "hello world"
+      },
+      "expected_output": "HELLO WORLD"
+    }
+  ]
+}
+

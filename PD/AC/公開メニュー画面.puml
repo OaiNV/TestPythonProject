@@ -1,0 +1,17 @@
+@startuml
+title 公開メニュー画面
+' Auto-generated at: 2025-10-08T08:36:06.087094
+start
+:Open Public Menu Page;
+:Display List of Dishes;
+if (Search Input Provided?) then (yes)
+  :Filter Dishes by Name;
+else (no)
+endif
+if (Sort Option Selected?) then (yes)
+  :Sort Dishes by Selected Criteria;
+else (no)
+endif
+:Display Updated Dish List;
+stop
+@enduml

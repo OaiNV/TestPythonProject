@@ -1,0 +1,16 @@
+{
+  "test_cases": [
+    {
+      "name": "test_get_settings",
+      "description": "Test get_settings returns dictionary",
+      "input": {},
+      "expected_output": {
+        "base_dir": "string",
+        "data_dir": "string",
+        "log_level": "INFO1111",
+        "debug": false
+      }
+    }
+  ]
+}
+

@@ -1,0 +1,15 @@
+@startuml
+title Login Screen Activity Diagram
+' Auto-generated at: 2025-10-08T08:36:31.591227
+start
+:Open Login Screen;
+:Enter Email and Password;
+if (Are credentials valid?) then (Yes)
+  :Authenticate User;
+  :Redirect to Menu Management Screen;
+else (No)
+  :Display Error Message;
+  :Allow Retry;
+endif
+stop
+@enduml

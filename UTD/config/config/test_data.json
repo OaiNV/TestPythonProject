@@ -1,0 +1,23 @@
+{
+  "test_cases": [
+    {
+      "name": "test_config_structure",
+      "description": "Test config.json structure",
+      "input": {},
+      "expected_output": {
+        "app_name": "Test Docify",
+        "version": "1.0.0",
+        "database": {
+          "host": "localhost",
+          "port": 5432,
+          "name": "testdb1111111"
+        },
+        "features": {
+          "logging": true,
+          "debug_mode": false
+        }
+      }
+    }
+  ]
+}
+
