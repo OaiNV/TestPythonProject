@@ -3,15 +3,10 @@
     {
       "name": "test_main_execution",
       "description": "Test main function execution",
-      "input": {
-        "config": {
-          "app_name": "Test Docify",
-          "version": "1.0.0"
-        }
-      },
+      "input": {},
       "expected_output": {
         "status": "success",
-        "message": "Processing complete1111"
+        "output": "string"
       }
     }
   ]

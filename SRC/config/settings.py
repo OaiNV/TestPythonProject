@@ -1,5 +1,5 @@
 """
-Application settings and configuration
+Application settings and configuration test 2
 """
 import os
 from pathlib import Path

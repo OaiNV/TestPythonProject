@@ -1,0 +1,13 @@
+{
+  "test_cases": [
+    {
+      "name": "test_start_app",
+      "description": "Test start_app function",
+      "input": {},
+      "expected_output": {
+        "result": "not null"
+      }
+    }
+  ]
+}
+

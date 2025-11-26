@@ -1,0 +1,28 @@
+{
+  "test_cases": [
+    {
+      "name": "test_process_data_dict",
+      "description": "Test process_data with dictionary input",
+      "input": {
+        "data": {
+          "key1": "value1",
+          "key2": "value2"
+        }
+      },
+      "expected_output": {
+        "result": "Processed 2 items"
+      }
+    },
+    {
+      "name": "test_process_data_empty",
+      "description": "Test process_data with empty input",
+      "input": {
+        "data": null
+      },
+      "expected_output": {
+        "result": "No data to process"
+      }
+    }
+  ]
+}
+

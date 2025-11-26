@@ -1,0 +1,16 @@
+{
+  "test_cases": [
+    {
+      "name": "test_initialize",
+      "description": "Test Application initialization",
+      "input": {},
+      "expected_output": {
+        "config": "dict",
+        "settings": "dict",
+        "app.config": "not null",
+        "app.settings": "not null"
+      }
+    }
+  ]
+}
+

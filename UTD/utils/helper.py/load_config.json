@@ -1,0 +1,13 @@
+{
+  "test_cases": [
+    {
+      "name": "test_load_config",
+      "description": "Test load_config function",
+      "input": {},
+      "expected_output": {
+        "type": "dict"
+      }
+    }
+  ]
+}
+

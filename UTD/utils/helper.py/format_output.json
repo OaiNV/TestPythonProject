@@ -1,0 +1,15 @@
+{
+  "test_cases": [
+    {
+      "name": "test_format_output",
+      "description": "Test format_output function",
+      "input": {
+        "text": "hello world"
+      },
+      "expected_output": {
+        "result": "HELLO WORLD"
+      }
+    }
+  ]
+}
+
