@@ -1,0 +1,84 @@
+{% extends "commons/base.html" %}
+{% from "commons/action-button.html" import action_button %}
+{% from "commons/code-preview.html" import code_preview, code_section %}
+{% from 'commons/sidebar.html' import sidebar_branch %}
+{% from 'commons/repo-info-bar.html' import repo_info_bar %}
+{% from 'commons/panel-tabs.html' import panel_tabs %}
+
+{% block title %}Unit Test Code - DocifyCode{% endblock %}
+
+{% block additional_css %}
+<link rel="stylesheet" href="/static/css/commons.css">
+<link rel="stylesheet" href="/static/css/rd_detail.css">
+<link rel="stylesheet" href="/static/css/source_detail.css">
+<link rel="stylesheet" href="/static/css/filelist.css">
+<link rel="stylesheet" href="/static/css/unit_test.css">
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <!-- Repository Info Bar (below navbar) -->
+    {{ repo_info_bar(
+    back_btn_id='backBtn',
+    file_name_id='fileName',
+    repo_name_id='repoName',
+    branch_name_id='branchName',
+    update_date_id='updateDate'
+    ) }}
+
+    <div class="rd-container">
+        <!-- Left Panel -->
+        <div class="rd-left-panel">
+            <!-- Tabs Section (Code / Git) -->
+            {{ panel_tabs(
+            tabs=[
+            {'id': 'tabCode', 'data_tab': 'tabContent-code', 'text': 'Code', 'active': True},
+            {'id': 'tabGit', 'data_tab': 'tabContent-git', 'text': 'Git', 'active': False}
+            ],
+            tabs_class='rd-tabs',
+            tab_class='rd-tab'
+            ) }}
+
+            <div class="rd-left-panel-content">
+                <!-- Code Tab Content -->
+                <div class="rd-tab-content active" id="tabContent-code" style="display: block;">
+                    <div class="code-tree-wrapper code-tree simple-scroll" id="codeNavigatorList">
+                        <!-- File structure populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Git Tab Content -->
+                <div class="rd-tab-content" id="tabContent-git" style="display: none;">
+                    <div class="rd-git-content" id="rdGitContent">
+                        {{ sidebar_branch(
+                        file_list_id='gitFileList',
+                        show_sort_btn=True,
+                        show_pull_btn=True,
+                        show_push_btn=True
+                        ) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="rd-main-content">
+            <div class="code-preview-container" id="unitTestCodePreview">
+                <!-- Code Section (Left) - Using macro -->
+                {{ code_section(
+                code_id='rdCodeEditor',
+                code_title='Code'
+                ) }}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_js %}
+<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+<script src="/static/js/commons/auth.js"></script>
+<script type="module" src="/static/js/file_detail/unit_test_code/unit_test_code_detail.js"></script>
+{% endblock %}

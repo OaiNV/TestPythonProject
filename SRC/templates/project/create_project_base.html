@@ -1,0 +1,250 @@
+{% extends "commons/base.html" %}
+
+{% block title %}{% block page_title %}{% endblock %} - DocifyCode{% endblock %}
+
+{% block additional_css %}
+<link rel="stylesheet" href="/static/css/create_project.css" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">{% block header_title %}{% endblock %}</h1>
+
+    <!-- Top Section-->
+    <div class="top-section">
+        <div class="basic-info">
+            <div class="form-group">
+                <label>プロジェクト名<span class="required">*</span>:</label>
+                <input type="text" id="projectName" class="form-input"
+                    maxlength="254">
+            </div>
+            <div class="form-group">
+                <label>説明:</label>
+                <textarea id="description" class="form-textarea"
+                    maxlength="64"></textarea>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <button id="cancelBtn" class="btn btn-cancel">キャンセル</button>
+            <button type="button" id="saveBtn" class="btn btn-save" disabled>
+                <img src="/static/images/save-icon.svg" width="18" height="18"
+                    alt="Save">保存
+            </button>
+        </div>
+    </div>
+
+    <div class="content-layout">
+        <div class="left-panel">
+            <!-- Git Information Section-->
+            <div class="git-info-grid">
+                <div class="git-icon-block">
+                    <img src="/static/images/git-icon.svg" width="32"
+                        height="32" alt="Git">
+                    <div class="git-title">Git情報</div>
+                </div>
+
+                <div class="git-form-block">
+                    <div class="form-row" id="git-url">
+                        <label id="repositoryLabel">リポジトリ<span class="required"
+                                id="repositoryRequiredMark">*</span>:</label>
+                        <input type="text" class="form-input-x"
+                            id="gitRepositoryInput" />
+                    </div>
+
+                    <div class="form-row" id="git-url">
+                        <label>ブランチ:</label>
+                        <input type="text" class="form-input-x"
+                            id="gitBranchInput" />
+                    </div>
+
+                    <div class="form-row">
+                        <label>AIプログラミング設定:</label>
+                        <div class="input-with-text">
+                            <span class="input-label">GitユーザーID</span>
+                            <input type="text" class="form-input-sm" />
+                        </div>
+                    </div>
+
+                    <div class="form-row no-label">
+                        <label></label>
+                        <div class="input-with-text">
+                            <span class="input-label">トークン／パスワード</span>
+                            <input type="password" class="form-input-sm" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="section" id="settingSection">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <img src="/static/images/settings-icon.svg" width="40"
+                            height="40" alt="Settings">
+                    </div>
+                    <div class="git-title">設定</div>
+                </div>
+                <div class="setting-form-block">
+                    <div class="form-row-setting">
+                        <label>
+                            <span class="left-only">作成言語</span><br>
+                            (Python、C#、Java)<span
+                                class="required">*</span>:</label>
+                        <select id="programmingLanguage" class="form-select"
+                            required>
+                            <option value disabled selected
+                                hidden>選択してください</option>
+                            <option value="Java">Java</option>
+                            <option value="Python">Python</option>
+                            <option value="C#">C#</option>
+                        </select>
+                    </div>
+                    <div class="form-row-setting">
+                        <label>単体試験フレームワーク<span
+                                class="required">*</span>:</label>
+                        <select id="frameworkTest" class="form-select" required>
+                            <option value disabled selected
+                                hidden>選択してください</option>
+                        </select>
+                    </div>
+                    <div class="form-row-setting">
+                        <label>ディレクトリ構成<span class="required">*</span>：<span
+                                class="toggle-icon">▼</span></label>
+                        <div class="directory-list">
+                            <div class="input-with-text-a"><span
+                                    class="input-label-1">RD</span><input
+                                    type="text"
+                                    class="form-input-sm highlight-rd"
+                                    value="RD" /></div>
+                            <div class="input-with-text-a"><span
+                                    class="input-label-1">BD</span><input
+                                    type="text"
+                                    class="form-input-sm highlight-rd"
+                                    value="BD" /></div>
+                            <div class="input-with-text-a"><span
+                                    class="input-label-1">PD</span><input
+                                    type="text"
+                                    class="form-input-sm highlight-rd"
+                                    value="PD" /></div>
+                            <div class="input-with-text-a"><span
+                                    class="input-label-1">PD/CD</span><input
+                                    type="text"
+                                    class="form-input-sm highlight-rd"
+                                    value="CD" /></div>
+                            <div class="input-with-text-a"><span
+                                    class="input-label-1">PD/MD</span><input
+                                    type="text"
+                                    class="form-input-sm highlight-rd"
+                                    value="MD" /></div>
+                            <div class="input-with-text-a"><span
+                                    class="input-label-1">PD/ID</span><input
+                                    type="text"
+                                    class="form-input-sm highlight-rd"
+                                    value="ID" /></div>
+                            <div class="input-with-text-a"><span
+                                    class="input-label-1">PD/FS</span><input
+                                    type="text"
+                                    class="form-input-sm highlight-rd"
+                                    value="FS" /></div>
+                            <div class="input-with-text-a"><span
+                                    class="input-label-1">PD/AC</span><input
+                                    type="text"
+                                    class="form-input-sm highlight-rd"
+                                    value="AC" /></div>
+                            <div class="input-with-text-a"
+                                data-disable-on="SOURCE_CODE"><span
+                                    class="input-label-1">SRC</span><input
+                                    type="text"
+                                    class="form-input-sm highlight-rd"
+                                    value="SRC" /></div>
+                            <div class="input-with-text-a"><span
+                                    class="input-label-1">UTD</span><input
+                                    type="text"
+                                    class="form-input-sm highlight-rd"
+                                    value="UTD" /></div>
+                            <div class="input-with-text-a"><span
+                                    class="input-label-1">UTC</span><input
+                                    type="text"
+                                    class="form-input-sm highlight-rd"
+                                    value="UTC" /></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% block left_panel_extra %}{% endblock %}
+        </div>
+
+        <div class="right-panel">
+            <!-- Member Registration Section -->
+            <div class="section" id="memberSection">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <img src="/static/images/member-icon.svg" width="32"
+                            height="32" alt="Member">
+                    </div>
+                    <span>メンバー登録</span>
+                </div>
+                <div class="section-content">
+                    <div class="member-search">
+                        <div class="git-title-member">メールアドレス/ユーザー名で登録</div>
+                    </div>
+                    <div class="member-layout">
+                        <div class="user-list">
+                            <div class="list-header">
+                                <span>ユーザー</span>
+                                <div class="search-box">
+                                    <input type="text" class="search-input"
+                                        id="userSearchInput">
+                                    <button class="search-icon-btn"
+                                        id="userSearchBtn">
+                                        <img
+                                            src="/static/images/search-icon.svg"
+                                            width="18" height="18" alt="Search">
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="userSearchResults" class="list-content">
+                            </div>
+                        </div>
+                        <div class="transfer-buttons" id="btnAddMember">
+                            <button class="btn-transfer">
+                                <img src="/static/images/sort-icon.svg"
+                                    width="32" height="32" alt="Sort">
+                            </button>
+                        </div>
+                        <div class="member-list">
+                            <div class="list-header">
+                                <span>メンバー</span>
+                                <div class="search-box">
+                                    <input type="text" class="search-input"
+                                        id="memberSearchInput">
+                                    <button class="search-icon-btn"
+                                        id="memberSearchBtn">
+                                        <img
+                                            src="/static/images/search-icon.svg"
+                                            width="18" height="18" alt="Search">
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="memberList" class="list-content">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% block right_panel_extra %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+<!-- <div id="gitPatDialog" class="git-auth-dialog" style="display:none;"></div>
+<div id="gitBucketDialog" class="git-auth-dialog" style="display:none;"></div> -->
+
+{% endblock %}
+
+{% block additional_js %}
+<script src="/static/js/commons/auth.js"></script>
+{% block page_specific_js %}{% endblock %}
+{% endblock %}

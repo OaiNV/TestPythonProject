@@ -1,0 +1,29 @@
+{% extends "commons/base.html" %} {% block title %}Projects - DocifyCode{%
+endblock %} {% block content %}
+<div class="main-content">
+  <!-- Header Section -->
+  <div class="projects-header">
+    <h1 class="projects-title">Project</h1>
+    <div class="projects-actions">
+      <button class="btn-new" id="newProjectBtn">
+        <span class="btn-icon">+</span>
+        New
+      </button>
+      <button class="btn-delete" id="deleteProjectBtn">Delete</button>
+    </div>
+  </div>
+
+  <!-- Projects Container -->
+  <div class="projects-container">
+    <!-- Projects Grid -->
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Projects will be loaded here -->
+    </div>
+  </div>
+</div>
+{% endblock %} {% block additional_css %}
+<link rel="stylesheet" href="/static/css/projects.css" />
+{% endblock %} {% block additional_js %}
+<script src="/static/js/commons/auth.js"></script>
+<script type="module" src="/static/js/project_list.js"></script>
+{% endblock %}

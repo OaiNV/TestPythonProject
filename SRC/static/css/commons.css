@@ -1,0 +1,125 @@
+/* Common Components Styles */
+
+/* Repository Info Bar */
+.repo-info-bar {
+    padding: 10.5px 15px;
+    background-color: #F6F8FA;
+    border: 2px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 0;
+    margin: 20px;
+    border-radius: 4px;
+}
+
+.repo-info-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.repo-info-left .back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #98A3AB;
+}
+
+.repo-info-left .back-btn:hover {
+    color: #333;
+}
+
+.repo-info-left .back-btn img {
+    width: 25px;
+    height: 25px;
+    transform: rotate(0deg);
+}
+
+.repo-info-left .file-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.repo-info-left .language-icon-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.repo-info-left .language-icon-container .language-logo {
+    display: block;
+    object-fit: contain;
+}
+
+.repo-info-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #646465;
+}
+
+/* Panel Tabs */
+.panel-tabs {
+    display: flex;
+    gap: 2%;
+    margin-bottom: 0;
+    margin-top: 2px;
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    border-bottom: 2px solid #d3d2d2;
+}
+
+.panel-tab {
+    padding: 0px 12px;
+    flex: 0 0 49%;
+    height: 32px;
+    line-height: 32px;
+    background: #F6F8FA;
+    border: 2px solid #d3d2d2;
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: #646465;
+    font-weight: 500;
+    z-index: 0;
+    position: relative;
+}
+
+.panel-tab:hover {
+    background: #edf2f7;
+    color: #2d3748;
+}
+
+.panel-tab.active {
+    background: #ffffff;
+    color: #1a202c;
+    z-index: 3;
+    margin-bottom: -2px;
+}
+
+.panel-tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #ffffff;
+    z-index: 5;
+}

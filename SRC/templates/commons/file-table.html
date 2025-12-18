@@ -1,0 +1,73 @@
+{#
+Common File Table Component
+Parameters:
+- checkbox_id: ID for the select all checkbox
+- tbody_id: ID for the table body
+- table_type: Type of table (requirement, basicDesign, detailDesign, sourceCode,
+unitTestSpec, unitTestCode)
+- data_items: Optional list of items to pre-render (if None, will be loaded
+dynamically via JS)
+
+Note:
+- If data_items is provided, dates (updated_at, created_at) should be
+pre-formatted in Python backend
+- For dynamic loading via JS, dates are formatted using formatDate() function in
+base.js
+#}
+{% macro file_table(checkbox_id='selectAllCheckbox', tbody_id='fileTableBody',
+table_type='requirement', data_items=None) %}
+<table class="file-table" data-table-type="{{ table_type }}">
+    <thead>
+        <tr>
+            <th><input type="checkbox" class="checkbox"
+                    id="{{ checkbox_id }}"></th>
+            <th data-column="file_name">Filename
+                <img src="/static/images/sort.svg" alt="Sort Icon"
+                    class="sort-icon"
+                    style="width:18px; height:18px; transform: translateY(2px);">
+            </th>
+            <th data-column="commit_id">Commit ID
+                <img src="/static/images/sort.svg" alt="Sort Icon"
+                    class="sort-icon"
+                    style="width:18px; height:18px; transform: translateY(2px);">
+            </th>
+            <th data-column="status">Status
+                <img src="/static/images/sort.svg" alt="Sort Icon"
+                    class="sort-icon"
+                    style="width:18px; height:18px; transform: translateY(2px);">
+            </th>
+            <th data-column="updated_at">Updated
+                <img src="/static/images/sort.svg" alt="Sort Icon"
+                    class="sort-icon"
+                    style="width:18px; height:18px; transform: translateY(2px);">
+            </th>
+            <th data-column="created_at">Created
+                <img src="/static/images/sort.svg" alt="Sort Icon"
+                    class="sort-icon"
+                    style="width:18px; height:18px; transform: translateY(2px);">
+            </th>
+        </tr>
+    </thead>
+    <tbody id="{{ tbody_id }}">
+        {% if data_items %}
+        {% for item in data_items %}
+        <tr data-file-id="{{ item.id if item.id else '' }}">
+            <td><input type="checkbox" class="checkbox row-checkbox"></td>
+            <td>{{ item.file_name if item.file_name else '' }}</td>
+            <td>{{ item.commit_id if item.commit_id else '' }}</td>
+            <td>
+                {% if item.status %}
+                <span class="status-badge status-{{ item.status }}">{{
+                    item.status }}</span>
+                {% endif %}
+            </td>
+            <td>{{ item.updated_at if item.updated_at else '' }}</td>
+            <td>{{ item.created_at if item.created_at else '' }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <!-- Files will be dynamically loaded here -->
+        {% endif %}
+    </tbody>
+</table>
+{% endmacro %}

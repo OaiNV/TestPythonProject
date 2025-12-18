@@ -1,0 +1,36 @@
+.top-section {
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 24px;
+    background-color: #f9f9f9;
+    margin-bottom: 32px;
+}
+
+#description {
+    height: auto;        
+    min-height: 80px;   
+    max-height: none;    
+    resize: vertical;    
+    overflow-y: hidden;  
+}
+
+.git-info-grid {
+    min-height: 250px;
+    margin-bottom: 20px;
+}
+
+.git-form-block {
+    padding-top: 18px;
+}
+
+#settingSection{
+    min-height: 200px;
+}
+
+.setting-form-block{
+    padding-top: 20px;
+}
+
+#memberSection{
+    min-height: 490px;
+}

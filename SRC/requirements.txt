@@ -1,0 +1,58 @@
+# Common package
+-e ./CEC_DocifyCode_Common
+
+# Core dependencies
+fastapi==0.112.1
+uvicorn==0.30.6
+python-dotenv==1.0.1
+pydantic==2.5.0
+
+# Database
+pymongo==4.6.1
+motor==3.3.2  # Async MongoDB driver
+
+# Security
+python-jose[cryptography]==3.3.0
+bcrypt==3.2.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+email-validator==2.1.0
+
+# Rate limiting
+slowapi==0.1.9
+
+# Templates
+jinja2==3.1.4
+
+# Utilities
+requests==2.31.0
+python-dateutil==2.8.2
+GitPython==3.1.40
+paho-mqtt>=1.6.1
+
+# Additional libraries from main requirements.txt
+numpy==2.1.0
+azure.cosmos==4.7.0
+chardet==5.2.0
+openai
+tqdm
+azure-storage-blob
+pyAesCrypt
+fpdf==1.7.2
+bleach
+uuid6
+antlr4-python3-runtime
+pdfkit
+markdown2
+plantuml
+pillow
+
+# Local wheel packages
+./sentan_tools_code-0.0.1-py3-none-any.whl
+./sentan_tools_utils-1.1.0-py3-none-any.whl
+./sentan_tools_nlp-0.1.1-py3-none-any.whl
+
+# Development
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2

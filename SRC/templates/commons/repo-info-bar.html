@@ -1,0 +1,45 @@
+{#
+Common Repository Info Bar Component
+Displays file name, back button, and repository information (repo name, branch name, update date)
+
+Parameters:
+- back_btn_id: DOM id for the back button (default: 'backBtn')
+- file_name_id: DOM id for the file name span (default: 'fileName')
+- repo_name_id: DOM id for the repository name span (default: 'repoName')
+- branch_name_id: DOM id for the branch name span (default: 'branchName')
+- update_date_id: DOM id for the update date span (default: 'updateDate')
+- file_name_text: Initial text for file name (default: 'File name')
+- repo_name_text: Initial text for repo name (default: 'Repository name')
+- branch_name_text: Initial text for branch name (default: 'Branch name')
+- update_date_text: Initial text for update date (default: '2025/10/27')
+#}
+
+{% macro repo_info_bar(
+    back_btn_id='backBtn',
+    file_name_id='fileName',
+    repo_name_id='repoName',
+    branch_name_id='branchName',
+    update_date_id='updateDate',
+    file_name_text='File name',
+    repo_name_text='Repository name',
+    branch_name_text='Branch name',
+    update_date_text='2025/10/27'
+) %}
+<div class="repo-info-bar">
+    <div class="repo-info-left">
+        <button class="back-btn" id="{{ back_btn_id }}">
+            <img src="/static/images/arrow-right.svg" alt="Back">
+        </button>
+        <span class="language-icon-container" id="languageIconContainer"></span>
+        <span class="file-name" id="{{ file_name_id }}">{{ file_name_text }}</span>
+    </div>
+    <div class="repo-info-right">
+        <span id="{{ repo_name_id }}">{{ repo_name_text }}</span>
+        <span>-</span>
+        <span id="{{ branch_name_id }}">{{ branch_name_text }}</span>
+        <span>-</span>
+        <span id="{{ update_date_id }}">{{ update_date_text }}</span>
+    </div>
+</div>
+{% endmacro %}
+

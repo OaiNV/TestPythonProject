@@ -1,0 +1,30 @@
+{#
+Common Panel Tabs Component
+Displays tabs in a left panel
+
+Parameters:
+- tabs: List of tab objects, each with:
+  - id: DOM id for the tab button
+  - data_tab: data-tab attribute value (target content id)
+  - text: Tab button text
+  - active: Boolean, whether this tab is active (default: False)
+- tabs_class: CSS class for the tabs container (default: 'panel-tabs')
+- tab_class: CSS class for individual tab buttons (default: 'panel-tab')
+#}
+
+{% macro panel_tabs(
+    tabs=[],
+    tabs_class='panel-tabs',
+    tab_class='panel-tab'
+) %}
+<div class="{{ tabs_class }}">
+    {% for tab in tabs %}
+    <button class="{{ tab_class }}{% if tab.active %} active{% endif %}" 
+            id="{{ tab.id }}" 
+            data-tab="{{ tab.data_tab }}">
+        {{ tab.text }}
+    </button>
+    {% endfor %}
+</div>
+{% endmacro %}
+

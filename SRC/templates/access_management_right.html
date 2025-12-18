@@ -1,0 +1,105 @@
+{% extends "commons/base.html" %} {% block title %}アクセス権限 - DocifyCode{%
+endblock %} {% block additional_css %}
+<link rel="stylesheet" href="/static/css/access_management_right.css" />
+{% endblock %} {% block content %}
+<div class="container">
+  <!-- Header Section -->
+  <div class="header">
+    <h1>アクセス権限</h1>
+  </div>
+
+  <!-- Tab Section -->
+  <div class="tab-section">
+    <button id="tabGroup" class="tab-btn active">グループ別</button>
+    <button id="tabUser" class="tab-btn">ユーザー別</button>
+  </div>
+
+  <!-- Group Tab Content -->
+  <div id="groupContent" class="tab-content active">
+    <!-- Group Registration Form -->
+    <div class="group-form-section">
+      <h2 class="section-title">登録グループ名</h2>
+      <div class="form-row">
+        <div class="role-selection">
+          <label class="radio-label">
+            <input type="radio" name="groupRole" value="admin" checked />
+            <span>管理者</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="groupRole" value="user" />
+            <span>ユーザー</span>
+          </label>
+        </div>
+        <input
+          type="text"
+          id="groupNameInput"
+          name="groupNameInput"
+          class="group-name-input"
+          placeholder="グループ名" />
+        <button id="addGroupBtn" class="btn btn-primary">グループ登録</button>
+      </div>
+    </div>
+
+    <!-- Groups Table -->
+    <div class="table-container">
+      <table class="groups-table">
+        <thead>
+          <tr class="table-header">
+            <th style="width: 35%">グループ名</th>
+            <th style="width: 25%">権限</th>
+            <th style="width: 25%">作成日</th>
+            <th style="width: 15%">削除</th>
+          </tr>
+        </thead>
+        <tbody id="groupsTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- User Tab Content -->
+  <div id="userContent" class="tab-content">
+    <!-- User Registration Form -->
+    <div class="group-form-section">
+      <h2 class="section-title">登録ユーザー</h2>
+      <div class="form-row">
+        <div class="role-selection">
+          <label class="radio-label">
+            <input type="radio" name="userRole" value="admin" checked />
+            <span>管理者</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="userRole" value="user" />
+            <span>ユーザー</span>
+          </label>
+        </div>
+        <input
+          type="email"
+          id="userNameInput"
+          name="userNameInput"
+          class="group-name-input"
+          placeholder="メールアドレス" />
+        <button id="addUserBtn" class="btn btn-primary">ユーザー登録</button>
+      </div>
+    </div>
+
+    <!-- Users Table -->
+    <div class="table-container">
+      <table class="groups-table">
+        <thead>
+          <tr class="table-header">
+            <th style="width: 35%">メールアドレス</th>
+            <th style="width: 25%">権限</th>
+            <th style="width: 25%">作成日</th>
+            <th style="width: 15%">削除</th>
+          </tr>
+        </thead>
+        <tbody id="usersTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block additional_js %}
+<script src="/static/js/commons/auth.js"></script>
+<script type="module" src="/static/js/access_management_right.js"></script>
+{% endblock %}

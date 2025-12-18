@@ -1,0 +1,251 @@
+/* Base Template Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* background-color: #f8f9fa; */
+    color: #333;
+    line-height: 1.6;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Main Content */
+.main-content {
+    height: calc(100vh - 60px); /* Total height minus navbar height */
+    padding: 10px;
+    position: relative; /* For loading overlay positioning */
+    overflow: hidden;
+}
+
+/* Loading Overlay - Common for all pages */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.loading-overlay.hidden {
+    display: none;
+}
+
+.loading-spinner {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 15px;
+    animation: rotate-square 1.5s linear infinite;
+}
+
+.loading-spinner .dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #3d69e3;
+    opacity: 1;
+    animation: color-rotate 1.2s ease-in-out infinite;
+}
+
+.loading-spinner .dot:nth-child(1) {
+    top: 0;
+    left: 0;
+    animation-delay: 0s;
+}
+
+.loading-spinner .dot:nth-child(2) {
+    top: 0;
+    right: 0;
+    animation-delay: 0.3s;
+}
+
+.loading-spinner .dot:nth-child(3) {
+    bottom: 0;
+    right: 0;
+    animation-delay: 0.6s;
+}
+
+.loading-spinner .dot:nth-child(4) {
+    bottom: 0;
+    left: 0;
+    animation-delay: 0.9s;
+}
+
+.main-content .loading-text {
+    color: #666;
+    font-size: 16px;
+}
+
+@keyframes rotate-square {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes color-rotate {
+    0%, 100% {
+        background-color: #3d69e3;
+        opacity: 1;
+    }
+    25% {
+        background-color: #5b8ef7;
+        opacity: 0.8;
+    }
+    50% {
+        background-color: #8ab4ff;
+        opacity: 0.6;
+    }
+    75% {
+        background-color: #5b8ef7;
+        opacity: 0.8;
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.footer p {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-container {
+        padding: 0 15px;
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 60px;
+    }
+    
+    .navbar-nav {
+        gap: 15px;
+    }
+    
+    .nav-text {
+        display: none;
+    }
+    
+    .nav-icon {
+        margin-right: 0;
+        font-size: 18px;
+    }
+    
+    .user-name {
+        display: none;
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+    
+    .navbar-nav {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .navbar-brand {
+        order: 1;
+    }
+    
+    .navbar-user {
+        order: 3;
+    }
+    
+    .dropdown-menu {
+        left: auto;
+        right: 0;
+    }
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
+.p-4 { padding: 1.5rem; }
+.p-5 { padding: 3rem; }
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

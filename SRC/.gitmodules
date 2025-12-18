@@ -1,0 +1,3 @@
+[submodule "cec_common"]
+	path = cec_common
+	url = https://github.com/scuti-asia/CEC_DocifyCode_Common.git

@@ -1,0 +1,70 @@
+# Docker Compose - CEC DocifyCode App with MongoDB
+
+name: cec_docifycode
+
+services:
+  cec_docifycode:
+    build: .
+    container_name: app
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    restart: always
+    depends_on:
+      - mongodb
+    networks:
+      - cec_docifycode_network
+
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    env_file:
+      - .env
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - cec_docifycode_network
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mqtt_broker
+    restart: always
+    ports:
+      - "1883:1883"   # MQTT standard port
+      - "9001:9001"   # WebSocket port
+    env_file:
+      - .env
+    volumes:
+      - ./CEC_DocifyCode_Common/mqtt/config:/mosquitto/config
+      - ./CEC_DocifyCode_Common/mqtt/data:/mosquitto/data
+      - ./CEC_DocifyCode_Common/mqtt/log:/mosquitto/log
+    networks:
+      - cec_docifycode_network
+
+  design_task_service:
+    build: .
+    container_name: design_task_service
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    restart: always
+    depends_on:
+      - mosquitto
+      - mongodb
+    networks:
+      - cec_docifycode_network
+    command: ["python", "-m", "design_task_service.subscriber"]
+
+volumes:
+  mongodb_data:
+
+networks:
+  cec_docifycode_network:
+    driver: bridge

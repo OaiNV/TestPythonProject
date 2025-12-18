@@ -1,0 +1,369 @@
+/* Error message styles */
+.error-message {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none;
+    font-weight: 500;
+}
+
+.form-group input.error {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1);
+}
+
+.form-group input:focus {
+    border-color: #3C69E2;
+    box-shadow: 0 0 0 2px rgba(60, 105, 226, 0.1);
+    outline: none;
+}
+
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Section */
+.header {
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #3C69E2;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3264f0;
+    transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-primary:disabled:hover {
+    background-color: #ccc;
+    transform: none;
+}
+
+.btn-secondary {
+    background-color: #A59B99;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #99908e;
+}
+
+.btn-secondary:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Search and Action Section */
+.search-action-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    max-width: 400px;
+}
+
+.action-container {
+    display: flex;
+    gap: 15px;
+}
+
+.search-input {
+    flex: 1;
+    width: 366px;
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #27ae60;
+}
+
+/* Table Styles */
+.table-container {
+    background: white;
+    border-radius: 8px;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    overflow: hidden;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.table-header {
+    /* background-color: #16a085; */
+    color: black;
+    font-weight: bold;
+    border-bottom: 2px solid #d3d2d2;
+}
+
+.table-header th {
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.users-table tbody tr {
+    border-bottom: 2px solid #d3d2d2;
+    transition: background-color 0.2s ease;
+}
+
+.users-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* .users-table tbody tr:last-child {
+    border-bottom: none;
+} */
+
+.users-table td {
+    padding: 15px 20px;
+    font-size: 14px;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* max-width: 400px; */
+}
+
+.users-table td:hover {
+  overflow: visible;
+  white-space: normal;
+  background: #f9fafb;
+  position: relative;
+  z-index: 2;
+}
+
+.users-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.users-table td:first-child {
+    /* font-weight: 500; */
+    color: #000000;
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.users-table td:nth-child(2) {
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.users-table td[title] {
+  cursor: pointer;
+}
+
+.users-table th {
+  background-color: #f7fafc;
+  color: #4a5568;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 2px solid #cbd5e0;
+}
+
+.users-table tr:hover {
+  background-color: #f1f5f9;
+}
+/* Action buttons in table - removed as per design */
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideIn 0.3s ease;
+}
+
+.modal-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+    font-size: 20px;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 0 25px 20px 25px;
+    /* border-top: 1px solid #eee; */
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #27ae60;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header h1 {
+        font-size: 20px;
+    }
+    
+    .search-action-section {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .search-container {
+        max-width: 100%;
+    }
+    
+    .action-container {
+        justify-content: center;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .users-table {
+        min-width: 600px;
+    }
+
+    .users-table td:first-child {
+         max-width: 180px;
+    }
+    
+    .users-table td:nth-child(2) {
+        max-width: 140px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 20px;
+    }
+}

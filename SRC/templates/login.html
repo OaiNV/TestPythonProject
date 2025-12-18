@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="max-length-email" content="{{ MAX_LENGTH_EMAIL }}">
+    <meta name="max-length-pass" content="{{ MAX_LENGTH_PASS }}">
+    <title>Sign in - DocifyCode</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet" />
+    <link href="/static/css/login.css" rel="stylesheet" />
+    <link href="/static/css/alert.css" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/static/images/favicon.png" />
+    <link rel="shortcut icon" type="image/png"
+      href="/static/images/favicon.png" />
+  </head>
+
+  <body class="bg-white min-h-screen flex items-center justify-center">
+    <!-- Main Login Container -->
+    <div class="w-full max-w-md mx-auto px-6 login-container">
+      <!-- Logo Section -->
+      <div class="text-center mb-6">
+        <div class="flex flex-col items-center">
+          <div class="relative">
+            <!-- Logo Image -->
+            <div class="w-24 h-24 flex items-center justify-center">
+              <img
+                src="/static/images/logo.png"
+                alt="DocifyCode Logo"
+                class="object-contain w-24 h-24 logo-icon" />
+            </div>
+          </div>
+          <!-- Screen title closer to logo -->
+          <h2 class="text-3xl font-normal text-gray-800 mt-4 logo-text">
+            Sign in
+          </h2>
+        </div>
+      </div>
+
+      <!-- Sign In Form -->
+      <div class="text-center">
+        <form id="login-form" class="space-y-6 login-form">
+          <!-- Email Input -->
+          <div class="relative">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="ID" maxlength="{{ MAX_LENGTH_EMAIL }}"
+              class="w-full px-0 py-3 border-0 border-b border-gray-300 focus:border-blue-600 focus:outline-none focus:ring-0 bg-transparent text-gray-800 placeholder-gray-400"
+              required />
+          </div>
+
+          <!-- Password Input -->
+          <div class="relative">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="PASS" maxlength="{{ MAX_LENGTH_PASS }}"
+              class="w-full px-0 py-3 border-0 border-b border-gray-300 focus:border-blue-600 focus:outline-none focus:ring-0 bg-transparent text-gray-800 placeholder-gray-400"
+              required />
+          </div>
+
+          <!-- Sign In Button -->
+          <button
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 btn-hover">
+            Sign In
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div id="alert-container" class="alert-container"></div>
+
+    <!-- Loading Overlay -->
+    <div
+      id="loading-overlay"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+      <div class="bg-white rounded-lg p-6 flex items-center space-x-3">
+        <div
+          class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 spinner"></div>
+        <span class="text-gray-700">Signing in...</span>
+      </div>
+    </div>
+
+    <!-- SHA-256 Library (for password hashing, works on HTTP/HTTPS) -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+    <script src="/static/js/commons/util.js"></script>
+    <script src="/static/js/commons/alert.js"></script>
+    <script type="module" src="/static/js/login.js"></script>
+  </body>
+</html>

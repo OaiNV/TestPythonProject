@@ -1,0 +1,290 @@
+{% extends "commons/base.html" %}
+{% from "commons/file-table.html" import file_table %}
+{% from "commons/action-button.html" import action_button %}
+{% from "commons/source-layout.html" import source_layout %}
+{% from 'commons/sidebar.html' import sidebar_branch %}
+
+{% block title %}Project Detail - DocifyCode{% endblock %}
+
+{% block additional_css %}
+<link rel="stylesheet" href="/static/css/project_detail.css">
+<meta name="git-check-interval" content="{{ GIT_CHECK_INTERVAL }}">
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="project-container">
+        <div class="project-header">
+            <button class="back-btn" id="backBtn"><img src="/static/images/arrow-right.svg" alt></button>
+            <span class="project-name" id="projectName">ProjectName001</span>
+            <span class="language-badge" id="languageBadge">C#</span>
+            <div class="git-info">
+                <span class="git-icon"><img src="/static/images/git.svg" width="22" height="22" alt="Git"></span>
+                <a href="#" class="repo-link" id="repoLink">Git Repo name <img src="/static/images/arrow-send.svg"
+                        alt></a>
+                <div class="branch-dropdown" id="branchDropdown">
+                    <div class="dropdown-selected" id="branchDropdownSelected">Select branch</div>
+                    <ul class="dropdown-options" id="branchDropdownOptions">
+                        <!-- Options will be populated by JavaScript -->
+                    </ul>
+                </div>
+            </div>
+            <div class="setting-wrapper">
+                <button class="setting">
+                    <img src="/static/images/settings-icon.svg" alt="Settings">
+                </button>
+            </div>
+        </div>
+
+        <div class="layout-container">
+            <div class="sidebar">
+                {{ sidebar_branch() }}
+                <div class="sidebar-bot">
+                    <div class="comment-section">
+                        <div class="comment-title">Comment</div>
+                        <div id="commentsContainer">
+                            <!-- Comments will be dynamically loaded here -->
+                        </div>
+                        <div class="comment-input-container">
+                            <input type="text" class="comment-input" id="commentInput">
+                            <button class="send-btn" id="sendCommentBtn"><img src="/static/images/send.svg"
+                                    alt></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <div class="tabs">
+                    <button id="tabRequirementBtn" class="tab active" data-tab="tabContent-requirement"><img
+                            src="/static/images/table-icon.svg" alt>要件定義書</button>
+                    <button id="tabBasicDesignBtn" class="tab" data-tab="tabContent-basicDesign"><img
+                            src="/static/images/table-icon.svg" alt>基本設計書</button>
+                    <button id="tabDetailDesignBtn" class="tab" data-tab="tabContent-detailDesign"><img
+                            src="/static/images/table-icon.svg" alt>詳細設計書</button>
+                    <button id="tabSourceCodeBtn" class="tab" data-tab="tabContent-sourceCode"><img
+                            src="/static/images/icon-sort.svg" alt>ソースコード</button>
+                    <button id="tabUnitTestSpecBtn" class="tab" data-tab="tabContent-unitTestSpec"><img
+                            src="/static/images/icon-sort.svg" alt>単体試験仕様書</button>
+                    <button id="tabUnitTestCodeBtn" class="tab" data-tab="tabContent-unitTestCode"><img
+                            src="/static/images/icon-sort.svg" alt>単体試験コード</button>
+                </div>
+
+                <!-- Tab Content: 要件定義書 -->
+                <div class="tab-content active" id="tabContent-requirement"">
+                    <!-- <div class=" empty-content">要件定義書の内容がここに表示されます</div> -->
+                <div class="toolbar">
+                    <p>要件定義書</p>
+                    <button class="btn btn-primary btn-icon" id="newFileBtn"> <img src="/static/images/plus.svg" alt>
+                        <span>New</span>
+                    </button>
+                    <button class="btn btn-primary btn-icon" id="gitPushBtn">
+                        <img src="/static/images/push.svg" alt>
+                        <span>Git Push</span>
+                    </button>
+                    {{ action_button(button_id='basicDesignDownloadBtn',
+                    button_text='Download') }}
+                </div>
+                <div class="toolbar1">
+                    <div class="box">
+                        <img src="/static/images/right-arrow.svg" alt>
+                        {{ action_button(button_id='generateDesignBtn',
+                        button_text='基本設計書（FE）作成') }}
+                    </div>
+                    <button class="btn btn-danger" id="deleteBtn"><img src="/static/images/trash.svg" alt>削除</button>
+                </div>
+                {{ file_table('selectAllCheckbox', 'fileTableBody',
+                'requirement') }}
+            </div>
+
+            <!-- Tab Content: 基本設計書 -->
+            <div class="tab-content" id="tabContent-basicDesign">
+                <div class="toolbar">
+                    <p>基本設計書</p>
+                    <!-- <button class="btn btn-primary btn-icon"
+                            id="newFileBtn1">
+                            <svg width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 12H20M12 4V20" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                            <span>New</span>
+                        </button> -->
+                    <button class="btn btn-primary btn-icon" id="gitPushBtn">
+                        <img src="/static/images/push.svg" alt>
+                        <span>Git Push</span>
+                    </button>
+                    {{
+                    action_button(button_id='requirementDesignDownloadBtn',
+                    button_text='Download') }}
+                </div>
+                <div class="toolbar1">
+                    <div class="box">
+                        <img src="/static/images/right-arrow.svg" alt>
+                        {{ action_button(button_id='generateDesignBtn1',
+                        button_text='詳細設計書（FE）生成') }}
+                    </div>
+                    <button class="btn btn-danger" id="deleteBtn1"><img src="/static/images/trash.svg" alt>削除</button>
+                </div>
+                {{ file_table('selectAllCheckbox1', 'fileTableBody1',
+                'basicDesign') }}
+            </div>
+
+            <!-- Tab Content: 詳細設計書 -->
+            <div class="tab-content" id="tabContent-detailDesign">
+                <div class="toolbar">
+                    <p>詳細設計書</p>
+                    <button class="btn btn-primary btn-icon" id="gitPushBtn">
+                        <img src="/static/images/push.svg" alt>
+                        <span>Git Push</span>
+                    </button>
+                    {{ action_button(button_id='regenerateBasicDesignBtn',
+                    button_text='基本設計書（RE）生成') }}
+                    {{ action_button(button_id='generateSourceCodeBtn',
+                    button_text='ソースコード生成') }}
+                    {{
+                    action_button(button_id='sourceCode-generateUnitTestSpecBtn',
+                    button_text='単体試験仕様書/コード生成(FE)') }}
+                    {{ action_button(button_id='detailDesignDownloadBtn',
+                    button_text='Download') }}
+                </div>
+
+                <!-- Split Layout: Sidebar + Content -->
+                <div class="detail-design-layout">
+                    <!-- Left Sidebar: Navigation -->
+                    <div class="detail-design-sidebar">
+                        <button class="detail-design-nav-btn active" data-section="class" id="classDesignBtn">
+                            <span>クラス設計</span>
+                        </button>
+                        <button class="detail-design-nav-btn" data-section="method" id="methodDesignBtn">
+                            <span>メソッド設計</span>
+                        </button>
+                        <button class="detail-design-nav-btn" data-section="interface" id="interfaceDesignBtn">
+                            <span>インターフェース設計</span>
+                        </button>
+                        <button class="detail-design-nav-btn" data-section="folder" id="folderStructureBtn">
+                            <span>フォルダ構成</span>
+                        </button>
+                        <button class="detail-design-nav-btn" data-section="activityDiagram"
+                            id="activityDiagramDesignBtn">
+                            <span>アクティビティ図</span>
+                        </button>
+                    </div>
+
+                    <!-- Right Content: File Tables -->
+                    <div class="detail-design-content">
+                        <!-- クラス設計 Section -->
+                        <div class="detail-design-section active" id="section-class">
+                            {{ file_table('selectAllCheckboxClass',
+                            'fileTableBodyClass', 'detailDesign-class') }}
+                        </div>
+
+                        <!-- メソッド設計 Section -->
+                        <div class="detail-design-section" id="section-method">
+                            {{ file_table('selectAllCheckboxMethod',
+                            'fileTableBodyMethod', 'detailDesign-method') }}
+                        </div>
+
+                        <!-- インターフェース設計 Section -->
+                        <div class="detail-design-section" id="section-interface">
+                            {{ file_table('selectAllCheckboxInterface',
+                            'fileTableBodyInterface',
+                            'detailDesign-interface') }}
+                        </div>
+
+                        <!-- フォルダ構成 Section -->
+                        <div class="detail-design-section" id="section-folder">
+                            {{ file_table('selectAllCheckboxFolder',
+                            'fileTableBodyFolder', 'detailDesign-folder') }}
+                        </div>
+
+                        <!-- アクティビティ図 Section -->
+                        <div class="detail-design-section" id="section-activityDiagram">
+                            {{
+                            file_table('selectAllCheckboxActivityDiagram',
+                            'fileTableBodyActivityDiagram',
+                            'detailDesign-activityDiagram') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: ソースコード -->
+            <div class="tab-content" id="tabContent-sourceCode">
+                <div class="toolbar">
+                    <p>ソースコード</p>
+                    <button class="btn btn-primary btn-icon" id="gitPushBtn">
+                        <img src="/static/images/push.svg" alt>
+                        <span>Git Push</span>
+                    </button>
+                    {{
+                    action_button(button_id='sourceCode-generateDetailedDesignDocumentBtn',
+                    button_text='詳細設計書生成') }}
+                    {{
+                    action_button(button_id='sourceCode-generateUnitTestSpecBtn',
+                    button_text='単体試験仕様書/コード生成(FE)') }}
+                    {{ action_button(button_id='sourceCodeDownloadBtn',
+                    button_text='Download') }}
+                </div>
+
+                <!-- Split Layout: Folder Tree + File List -->
+                {{ source_layout('sourceTree', 'sourceFileHeader',
+                'currentFolderPath', 'sourceFileList') }}
+            </div>
+
+            <!-- Tab Content: 単体試験仕様書 -->
+            <div class="tab-content" id="tabContent-unitTestSpec">
+                <div class="toolbar">
+                    <p>単体試験仕様書</p>
+                    <button class="btn btn-primary btn-icon" id="gitPushBtn">
+                        <img src="/static/images/push.svg" alt>
+                        <span>Git Push</span>
+                    </button>
+                    {{
+                    action_button(button_id='utd-generateUnitTestCodeBtn',
+                    button_text='単体試験コード生成') }}
+                    {{
+                    action_button(button_id='utd-downloadUnitTestSpecBtn',
+                    button_text='Download') }}
+                </div>
+
+                {{ source_layout('utd-sourceTree', 'utd-sourceFileHeader',
+                'utd-currentFolderPath', 'utd-sourceFileList',
+                'Loading folders...', 'フォルダを選択して単体試験仕様書を表示') }}
+            </div>
+
+            <!-- Tab Content: 単体試験コード -->
+            <div class="tab-content" id="tabContent-unitTestCode">
+                <div class="toolbar">
+                    <p>単体試験コード</p>
+                    <button class="btn btn-primary btn-icon" id="gitPushBtn">
+                        <img src="/static/images/push.svg" alt>
+                        <span>Git Push</span>
+                    </button>
+                    {{
+                    action_button(button_id='utc-downloadUnitTestCodeBtn',
+                    button_text='Download') }}
+                </div>
+
+                {{ source_layout('utc-sourceTree', 'utc-sourceFileHeader',
+                'utc-currentFolderPath', 'utc-sourceFileList',
+                'Loading folders...', 'フォルダを選択して単体試験コードを表示') }}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+{% block additional_js %}
+<script>
+    // Pass environment variables to frontend
+    // GIT_CHECK_INTERVAL is in minutes (default: 1 minute)
+    const gitCheckIntervalMeta = document.querySelector('meta[name="git-check-interval"]');
+    window.GIT_CHECK_INTERVAL = gitCheckIntervalMeta ? parseInt(gitCheckIntervalMeta.getAttribute('content'), 10) : 1;
+</script>
+<script src="/static/js/commons/auth.js"></script>
+<script type="module" src="/static/js/project_detail.js"></script>
+{% endblock %}

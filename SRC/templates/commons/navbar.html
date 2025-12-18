@@ -1,0 +1,80 @@
+<!-- Navigation Header -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <!-- Logo and Brand -->
+        <div class="navbar-brand">
+            <a href="/projects" class="brand-link">
+                <span class="brand-text">docifycode</span>
+                <img src="/static/images/icon.png" alt="DocifyCode"
+                    class="brand-icon">
+            </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="navbar-nav">
+            <!-- Project Link -->
+            <div class="nav-item">
+                <a href="/projects" class="nav-link">
+                    <span class="nav-icon">
+                        <!-- <span class="material-symbols-outlined">cases</span> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px"
+                            viewBox="0 -960 960 960" width="20px"
+                            fill="currentColor">
+                            <path
+                                d="M120-80q-33 0-56.5-23.5T40-160v-440h80v440h680v80H120Zm160-160q-33 0-56.5-23.5T200-320v-440h200v-80q0-33 23.5-56.5T480-920h160q33 0 56.5 23.5T720-840v80h200v440q0 33-23.5 56.5T840-240H280Zm0-80h560v-360H280v360Zm200-440h160v-80H480v80ZM280-320v-360 360Z" />
+                        </svg>
+                    </span>
+                    <span class="nav-text">Project</span>
+                </a>
+            </div>
+
+            <!-- Settings Dropdown -->
+            <div class="nav-item dropdown" id="settingsNav">
+                <a href="#" class="nav-link dropdown-toggle"
+                    id="settingsDropdown">
+                    <span class="nav-icon">
+                        <!-- <i class="fa-solid fa-gears"></i> -->
+
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px"
+                            viewBox="0 -960 960 960" width="20px"
+                            fill="currentColor">
+                            <path
+                                d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-1 13.5l103 78-110 190-119-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 41q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 65q-5 14-7 29.5t-2 31.5q0 16 2 31.5t7 29.5l-86 65 39 68 99-41q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z" />
+                        </svg>
+                    </span>
+                    <span class="nav-text">Settings</span>
+                    <span class="dropdown-caret">▼</span>
+                </a>
+                <div class="dropdown-menu" id="settingsMenu">
+                    <a href="/user-management" class="dropdown-item">
+                        <span class="dropdown-icon"><span
+                                class="material-symbols-outlined">manage_accounts</span></span>
+                        ユーザー管理
+                    </a>
+                    <a href="/access-management-right" class="dropdown-item">
+                        <span class="dropdown-icon"><i
+                                class="fa-solid fa-users"></i></span>
+                        アクセス権限
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Information -->
+        <div class="navbar-user">
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <span class="user-name">Admin Name</span>
+            </div>
+            <div class="user-menu">
+                <div class="user-dropdown-menu" id="userDropdownMenu">
+                    <hr class="user-dropdown-divider">
+                    <a href="/logout" class="user-dropdown-item logout">
+                        <span class="material-symbols-outlined">logout</span>
+                        ログアウト
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

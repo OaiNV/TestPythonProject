@@ -1,0 +1,73 @@
+{# 
+    Common Action Button Component with Magic Wand Icon
+    
+    Parameters:
+    - button_id: ID for the button element (required)
+    - button_text: Text to display on the button (required)
+    - button_class: Additional CSS classes (default: 'btn btn-primary')
+    - icon_color: Fill color for the SVG icon (default: '#ffffff')
+    - disabled: Whether the button is disabled (default: False)
+    
+    Usage:
+    {% from 'commons/action-button.html' import action_button %}
+    {{ action_button(button_id='myBtn', button_text='Click Me') }}
+    
+    Then in JavaScript:
+    document.getElementById('myBtn').addEventListener('click', function() {
+        // Your handler code
+    });
+#}
+
+{% macro action_button(button_id, button_text, button_class='btn btn-primary', icon_color='#ffffff', disabled=False) %}
+<button class="{{ button_class }}" 
+        id="{{ button_id }}"
+        {% if disabled %}disabled{% endif %}>
+    {% if button_text == 'Download' %}
+    <img src="/static/images/download.png" width="20" height="20" alt="download-icon">
+    {% elif button_text == 'Git Push' %}
+    <img src="/static/images/push.svg" alt="Push" width="16" height="16">
+    {% elif button_text == 'Git Pull' %}
+    <span class="material-symbols-outlined" style="font-size: 16px;">download</span>
+    {% else %}
+    <svg width="20"
+         height="20"
+         viewBox="0 0 512 512"
+         fill="{{ icon_color }}"
+         xmlns="http://www.w3.org/2000/svg"
+         aria-hidden="true">
+        <g>
+            <g>
+                <path d="M454.32,219.727l-38.766-51.947l20.815-61.385c2.046-6.032,0.489-12.704-4.015-17.208 c-4.504-4.504-11.175-6.061-17.208-4.015l-61.384,20.815l-51.949-38.766c-5.103-3.81-11.929-4.392-17.605-1.499 c-5.676,2.893-9.217,8.755-9.136,15.125l0.829,64.815l-52.923,37.426c-5.201,3.678-7.863,9.989-6.867,16.282 c0.996,6.291,5.479,11.471,11.561,13.363l43.843,13.629L14.443,483.432c-6.535,6.534-6.535,17.131,0,23.666s17.131,6.535,23.666,0 l257.072-257.073l13.629,43.844c1.891,6.082,7.071,10.565,13.363,11.561c0.876,0.138,1.75,0.206,2.622,0.206 c5.375,0,10.494-2.595,13.66-7.072l37.426-52.923l64.815,0.828c0.071,0.001,0.143,0.001,0.214,0.001 c6.287,0,12.051-3.525,14.909-9.137C458.711,231.658,458.129,224.833,454.32,219.727z M367.51,212.063 c-5.516-0.077-10.697,2.574-13.876,7.071l-22.929,32.421c-12.767-41.075-12.097-40.949-15.933-44.786 c-4.112-4.112-4.736-3.485-44.786-15.934l32.423-22.928c4.496-3.181,7.14-8.37,7.071-13.876l-0.508-39.706l31.825,23.748 c4.415,3.294,10.167,4.206,15.382,2.437l37.606-12.753l-12.753,37.607c-1.769,5.217-0.859,10.969,2.437,15.382l23.748,31.825 L367.51,212.063z"></path>
+            </g>
+        </g>
+        <g>
+            <g>
+                <polygon points="173.373,67.274 160.014,42.848 146.656,67.274 122.23,80.632 146.656,93.992 160.014,118.417 173.373,93.992 197.799,80.632 "></polygon>
+            </g>
+        </g>
+        <g>
+            <g>
+                <polygon points="362.946,384.489 352.14,364.731 341.335,384.489 321.577,395.294 341.335,406.1 352.14,425.856 362.946,406.1 382.703,395.294 "></polygon>
+            </g>
+        </g>
+        <g>
+            <g>
+                <polygon points="378.142,19.757 367.337,0 356.531,19.757 336.774,30.563 356.531,41.369 367.337,61.126 378.142,41.369 397.9,30.563 "></polygon>
+            </g>
+        </g>
+        <g>
+            <g>
+                <polygon points="490.635,142.513 484.167,130.689 477.701,142.513 465.876,148.979 477.701,155.446 484.167,167.27 490.635,155.446 502.458,148.979 "></polygon>
+            </g>
+        </g>
+        <g>
+            <g>
+                <polygon points="492.626,294.117 465.876,301.951 439.128,294.117 446.962,320.865 439.128,347.615 465.876,339.781 492.626,347.615 484.791,320.865 "></polygon>
+            </g>
+        </g>
+    </svg>
+    {% endif %}
+    <span>{{ button_text }}</span>
+</button>
+{% endmacro %}
+

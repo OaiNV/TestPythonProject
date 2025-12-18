@@ -1,0 +1,73 @@
+{#
+Common Code-Preview Component
+Renders a split layout with code editor on the left and preview on the right.
+
+Parameters:
+- code_id: DOM id for the code editor container
+- preview_id: DOM id for the preview container
+- code_title: Title for the code section (default: 'Code')
+- preview_title: Title for the preview section (default: 'Preview')
+- save_btn_id: DOM id for save button (default: 'saveCodeBtn')
+- code_title_class: CSS class for code title (default: 'code-title')
+- code_actions_class: CSS class for code actions container (default: 'code-actions')
+- code_action_btn_class: CSS class for code action buttons (default: 'code-action-btn')
+- preview_header_html: Custom HTML for preview header (default: None, use built-in header)
+#}
+
+{% macro code_section(code_id='codeEditor', code_title='Code', save_btn_id='saveCodeBtn', code_title_class='code-title',
+code_actions_class='code-actions', code_action_btn_class='code-action-btn') %}
+<!-- Code Section (Left) -->
+<div class="code-section" id="codeSection">
+    <div class="code-header">
+        <h3 class="{{ code_title_class }}" id="codeTitle">{{ code_title }}</h3>
+        <div class="{{ code_actions_class }}">
+            <button class="{{ code_action_btn_class }}" id="{{ save_btn_id }}" title="Save">
+                <img src="/static/images/save.svg" alt="Save" width="18px" height="18px">
+            </button>
+            <button class="{{ code_action_btn_class }}" id="expandCodeBtn" title="Expand">
+                <span class="material-symbols-outlined" style="font-size: 18px;">open_in_full</span>
+            </button>
+            <button class="{{ code_action_btn_class }}" id="copyCodeBtn" title="Copy">
+                <img src="/static/images/copyl.png" alt="Copy" width="18px" height="18px" style="opacity: 0.7;">
+            </button>
+        </div>
+    </div>
+    <div class="code-editor-wrapper">
+        <textarea class="code-editor" id="{{ code_id }}" spellcheck="false"></textarea>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro code_preview(code_id='codeEditor', preview_id='preview', code_title='Code', preview_title='Preview',
+save_btn_id='saveCodeBtn', code_title_class='code-title', code_actions_class='code-actions',
+code_action_btn_class='code-action-btn', preview_header_html=None) %}
+<div class="code-preview-container">
+    {{ code_section(code_id=code_id, code_title=code_title, save_btn_id=save_btn_id, code_title_class=code_title_class,
+    code_actions_class=code_actions_class, code_action_btn_class=code_action_btn_class) }}
+
+    <!-- Preview Section (Right) -->
+    <div class="preview-section" id="previewSection">
+        <div class="preview-header">
+            {% if preview_header_html %}
+            {{ preview_header_html | safe }}
+            {% else %}
+            <h3 class="preview-title">{{ preview_title }}</h3>
+            <div class="preview-actions">
+                <button class="preview-action-btn" id="expandPreviewBtn" title="Expand Preview">
+                    <span class="material-symbols-outlined" style="font-size: 16px;">open_in_full</span>
+                </button>
+            </div>
+            {% endif %}
+        </div>
+        <div class="preview-content-wrapper">
+            <div class="preview-content" id="{{ preview_id }}">
+                {% if caller %}
+                {{ caller() }}
+                {% else %}
+                <!-- Preview content will be rendered here -->
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}

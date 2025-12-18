@@ -1,0 +1,355 @@
+/* Projects Page Styles */
+.main-content {
+  /* padding: 12px !important; */
+  /* padding-top: 8px !important; */
+  background-color: #ffffff;
+  height: calc(100vh - 65px);
+  /* Full height minus header */
+  overflow: hidden;
+  /* Prevent main content scroll */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Section */
+.projects-header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 20px;
+}
+
+.projects-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333333;
+  margin: 0;
+}
+
+.projects-actions {
+  padding-top: 5px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Buttons */
+.btn-new {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: background-color 0.2s ease;
+  width: 100px;
+  height: 30px;
+}
+
+.btn-new:hover {
+  background-color: #3367d6;
+}
+
+.btn-new .btn-icon {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-delete {
+  background-color: transparent;
+  color: #3367d6;
+  border: 1px solid #3367d6;
+  border-radius: 2px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100px;
+  height: 30px;
+  display: none;
+}
+
+.btn-delete:hover {
+  background-color: #eeeeee;
+  color: #333333;
+}
+
+/* Projects Container */
+.projects-container {
+  margin-top: 24px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  flex: 1;
+  /* Take remaining space */
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  /* Allow flex item to shrink */
+}
+
+/* Projects Grid */
+.projects-grid {
+  /* margin-top: 30px; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 20px;
+}
+
+/* Custom scrollbar for projects container */
+.projects-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.projects-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.projects-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Project Card */
+.project-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  transition: box-shadow 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.project-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Selected state for project card */
+.project-card.selected {
+  border-color: #1a56db;
+  box-shadow: 0 0 0 3px rgba(51, 103, 214, 0.3);
+  background-color: #eef3ff;
+}
+
+.project-card.selected .project-name {
+  color: #1a56db;
+  font-weight: 700;
+}
+
+/* Project Card Header */
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.project-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Language Tag */
+.language-tag {
+  padding: 4px 8px;
+  /* border-radius: 4px; */
+  font-size: 12px;
+  font-weight: 500;
+  width: 80px;
+}
+
+.language-tag {
+  display: inline-block;
+  padding: 2px;
+}
+
+.language-tag img {
+  display: block;
+}
+
+.language-logo {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  background-color: transparent;
+}
+
+/* .language-tag.csharp {
+  background-color: transparent;
+  color: #1976d2;
+  border: 2px solid #1976d2;
+
+  padding: 2px 6px;
+  text-align: center;
+} */
+
+/* .language-tag.python {
+  background-color: transparent;
+  color: #2e7d32;
+  border: 2px solid #2e7d32;
+  padding: 2px 6px;
+  text-align: center;
+}
+
+.language-tag.java {
+  background-color: transparent;
+  color: #f1ba83;
+  border: 2px solid #f1ba83;
+  padding: 2px 6px;
+  text-align: center;
+} */
+
+/* Right side meta info container */
+.project-meta-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Branch Info */
+.branch-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #666666;
+  font-size: 12px;
+}
+
+.branch-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Date */
+.project-date {
+  color: #999999;
+  font-size: 12px;
+}
+
+/* Status Dropdown */
+.status-dropdown {
+  color: #666666;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 5px;
+}
+
+.status-tag {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #f5f5f5;
+  color: #666666;
+}
+
+/* Project Name */
+.project-name {
+  /* margin-left: 20px; */
+  font-size: 18px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.status-badge {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Project Description */
+.project-description {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.5;
+  margin: 0;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 8px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* giới hạn 3 dòng */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  word-break: break-all;
+  /* bắt xuống dòng ngay cả chuỗi dài */
+  text-overflow: ellipsis;
+  text-align: justify;
+}
+
+.git-pull-btn {
+  background: #f5f5f5;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  padding: 2px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  transition: background 0.2s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, auto);
+    max-height: calc(6 * (auto + 20px) - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 16px;
+  }
+
+  .projects-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .projects-title {
+    font-size: 24px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(8, auto);
+    max-height: calc(8 * (auto + 20px) - 20px);
+    gap: 16px;
+  }
+
+  .project-card {
+    padding: 16px;
+  }
+}

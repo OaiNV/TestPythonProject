@@ -1,0 +1,878 @@
+/* Source Code Detail Page Styles */
+
+/* Repository Info Bar styles are in commons.css */
+
+.rd-left-panel-content {
+    border: 2px solid #d3d2d2;
+    border-top: none;
+    background: #ffffff;
+    padding: 0 8px 16px;
+}
+
+.code-tree-wrapper {
+    padding: 12px;
+    background: #fff;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.code-tree-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.code-tree-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.code-preview-container {
+    margin-top: 0;
+}
+
+.code-section {
+    margin-bottom: -2px;
+    margin-top: 2px;
+}
+
+.preview-section {
+    height: auto !important;
+    margin-bottom: -2px;
+    border: none;
+}
+
+.rd-left-panel {
+    margin-bottom: 35px;
+}
+
+.icon-btn-sm {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.icon-btn-sm:hover {
+    background: #f1f5f9;
+}
+
+.code-tree {
+    flex: 1;
+    overflow-y: auto;
+    /* border: 1px solid #e5e7eb; */
+    /* border-radius: 6px; */
+    background: #fff;
+    padding: 6px 0;
+}
+
+.code-tree.simple-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.code-tree.simple-scroll::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.5);
+    border-radius: 999px;
+}
+
+.structure-node {
+    position: relative;
+}
+
+.structure-item {
+    padding: 6px 12px 6px 26px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1f2937;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.structure-item.file.has-svg-icon {
+    padding-left: 8px;
+}
+
+.structure-item:hover {
+    background: #f3f4f6;
+}
+
+.structure-item::before {
+    content: attr(data-badge);
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 18px;
+    font-size: 10px;
+    font-weight: 600;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    color: #475569;
+    background: #fff;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.structure-item.folder {
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.structure-item.folder::before {
+    content: "▸";
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    font-size: 10px;
+    transition: transform 0.2s ease;
+    position: relative;
+    transform: none;
+}
+
+.structure-item.folder.expanded::before {
+    transform: rotate(90deg);
+}
+
+.structure-item.file::before {
+    display: none;
+}
+
+.structure-item.file.has-svg-icon::before {
+    display: none;
+}
+
+.structure-item.file .file-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    display: block !important;
+    margin-right: 4px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.structure-item.file.has-svg-icon .file-icon {
+    order: -1;
+}
+
+.structure-item.class::before {
+    content: "C";
+    background: transparent;
+    color: #3b82f6;
+    border-color: #3b82f6;
+    border-width: 1.5px;
+}
+
+.structure-item.class .name {
+    color: #3b82f6;
+}
+
+.structure-item.global-method::before {
+    content: "gm";
+    background: transparent;
+    color: #fbbf24;
+    border-color: #fbbf24;
+    border-width: 1.5px;
+}
+
+.structure-item.global-method .name {
+    color: #fbbf24;
+}
+
+.structure-item.method::before {
+    content: "M";
+    background: transparent;
+    color: #ef4444;
+    border-color: #ef4444;
+    border-width: 1.5px;
+}
+
+.structure-item.method .name {
+    color: #ef4444;
+}
+
+.structure-children {
+    margin-left: 18px;
+    padding-left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.structure-item .name {
+    font-weight: 500;
+    color: #0f172a;
+}
+
+.structure-item.method,
+.structure-item.class,
+.structure-item.global-method {
+    cursor: default;
+}
+
+.rd-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 0;
+    margin-top: 2px;
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    border-bottom: 2px solid #d3d2d2;
+}
+
+.rd-tab {
+    padding: 0 12px;
+    flex: 1;
+    height: 34px;
+    line-height: 34px;
+    background: #F6F8FA;
+    border: 2px solid #d3d2d2;
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: #646465;
+    font-weight: 500;
+    z-index: 0;
+    position: relative;
+}
+
+
+.rd-tab-content {
+    display: none;
+    opacity: 1;
+    /* overflow-y: scroll; */
+    max-height: calc(100vh - 150px);
+    box-sizing: border-box;
+}
+
+.rd-tab-content.active {
+    display: block;
+}
+
+/* Remove scroll for Batch Processing and Git tabs */
+#tabContent-batchProcessing,
+#tabContent-git {
+    overflow-y: visible;
+    max-height: none;
+}
+
+.rd-action-section {
+    padding: 10px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: #ffffff;
+    transition: none;
+}
+
+#rdGitContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#rdGitContent .sidebar-top {
+    flex: 0 1 40%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 6px;
+    padding-right: 6px;
+    box-sizing: border-box;
+    min-height: 0;
+    height: auto;
+    max-height: 50%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#rdGitContent .sidebar-top .file-list {
+    border: 1px solid #d3d2d2;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #fff;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+#rdGitContent .sidebar-top .file-item {
+    border: none;
+}
+
+#rdGitContent .issue-section {
+    flex: 0 0 50%;
+    padding-left: 6px;
+    padding-right: 6px;
+    box-sizing: border-box;
+}
+
+.code-editor {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: none;
+    background-color: #fff;
+    color: #333;
+    box-sizing: border-box;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+
+/* Override rd-tab-content for preview section */
+.preview-section .rd-tab-content {
+    display: none;
+    padding: 16px;
+    overflow-x: auto;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    min-width: 0;
+}
+
+.preview-section .rd-tab-content.active {
+    display: block;
+}
+
+.preview-section .preview-section-item {
+    margin-bottom: 32px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+    width: 100%;
+}
+
+.preview-section .preview-section-item:last-child {
+    margin-bottom: 10px;
+}
+
+.preview-section .preview-section-title {
+    font-size: 15px;
+    color: #848484;
+    padding-left: 0;
+}
+
+.preview-section .preview-diagram {
+    background: #FAFAF6;
+    padding: 16px;
+    min-height: 150px;
+    display: block;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: visible;
+    border-radius: 6px;
+    position: relative;
+}
+
+.preview-section .preview-diagram img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Code display in unitTestCode - preserve line breaks */
+#unitTestCode {
+    display: block;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#unitTestCode pre {
+    margin: 0;
+    padding: 16px;
+    background: #FAFAF6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    width: 100%;
+    border-radius: 6px;
+    overflow-x: auto;
+    border: none;
+}
+
+#unitTestCode code {
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+/* JSON display in decisionJSON - preserve formatting */
+#decisionJSON {
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+
+#decisionJSON pre {
+    margin: 0;
+    padding: 16px;
+    background: #FAFAF6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    width: 100%;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+#decisionJSON code {
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.preview-section .preview-table {
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.preview-section .preview-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.preview-section .preview-table th,
+.preview-section .preview-table td {
+    padding: 10px;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.preview-section .preview-table th {
+    background: #f3f4f6;
+    font-weight: 600;
+    color: #374151;
+}
+
+.preview-section .preview-table td {
+    color: #6b7280;
+}
+
+.preview-section .preview-code {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Preview panel content - match height with rd-left-panel */
+.preview-panel-content {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.issue-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: #374151;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.issue-input-title {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 8px;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.issue-input-title:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+.issue-input-area {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 14px;
+    resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+    min-height: 200px;
+    resize: none;
+}
+
+.issue-input-area:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+.btn-submit-issue {
+    width: 80%;
+    padding: 10px;
+    background: #3C69E2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 8px auto 0;
+}
+
+.btn-submit-issue:hover {
+    filter: brightness(0.96);
+}
+
+.btn-icon:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+}
+
+.preview-section .preview-text {
+    background: #FAFAF6;
+    border-radius: 6px;
+    padding: 16px;
+    min-height: 100px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #0f172a;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.preview-section .empty-state {
+    text-align: center;
+    color: #94a3b8;
+    padding: 40px 20px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.preview-action-btn-group {
+    display: flex;
+    gap: 6px;
+    position: sticky;
+    top: 10px;
+    justify-content: flex-end;
+    z-index: 10;
+}
+
+.preview-action-btn-group .preview-action-btn {
+    position: relative;
+}
+
+/* ============================================
+   Markdown / Preview Section Styles (Updated)
+   ============================================ */
+
+/* Markdown tables - wrapper for proper scrolling */
+.preview-section .preview-diagram>table,
+.preview-section .preview-diagram table {
+    width: auto;
+    min-width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 16px 0;
+    background: #fff;
+    display: table;
+    font-size: 12px;
+}
+
+.preview-section .preview-diagram thead {
+    display: table-header-group;
+    background: #f9fafb;
+}
+
+.preview-section .preview-diagram tbody {
+    display: table-row-group;
+}
+
+.preview-section .preview-diagram tr {
+    display: table-row;
+    transition: background-color 0.2s ease;
+}
+
+.preview-section .preview-diagram tr:hover {
+    background-color: #f9fafb;
+}
+
+.preview-section .preview-diagram th,
+.preview-section .preview-diagram td {
+    padding: 8px 10px;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+    vertical-align: top;
+    word-wrap: break-word;
+    white-space: normal;
+    min-width: 80px;
+    box-sizing: border-box;
+}
+
+.preview-section .preview-diagram th {
+    background: #f9fafb;
+    font-weight: 600;
+    color: #1f2937;
+    border-bottom: 2px solid #d1d5db;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.preview-section .preview-diagram td {
+    color: #6b7280;
+}
+
+.preview-section .preview-diagram tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Markdown headings */
+.preview-section .preview-diagram h1,
+.preview-section .preview-diagram h2,
+.preview-section .preview-diagram h3,
+.preview-section .preview-diagram h4,
+.preview-section .preview-diagram h5,
+.preview-section .preview-diagram h6 {
+    margin-top: 24px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #1f2937;
+}
+
+.preview-section .preview-diagram h1:first-child,
+.preview-section .preview-diagram h2:first-child,
+.preview-section .preview-diagram h3:first-child,
+.preview-section .preview-diagram h4:first-child {
+    margin-top: 0;
+}
+
+.preview-section .preview-diagram h1 {
+    font-size: 24px;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.preview-section .preview-diagram h2 {
+    font-size: 20px;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+}
+
+.preview-section .preview-diagram h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.preview-section .preview-diagram h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.preview-section .preview-diagram h5 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.preview-section .preview-diagram h6 {
+    font-size: 0.875rem;
+    margin-bottom: 8px;
+    color: #6b7280;
+}
+
+/* Markdown paragraphs */
+.preview-section .preview-diagram p {
+    margin: 12px 0;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.preview-section .preview-diagram p:first-child {
+    margin-top: 0;
+}
+
+.preview-section .preview-diagram p:last-child {
+    margin-bottom: 0;
+}
+
+/* Markdown lists */
+.preview-section .preview-diagram ul,
+.preview-section .preview-diagram ol {
+    margin: 12px 0;
+    padding-left: 24px;
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.preview-section .preview-diagram li {
+    margin: 6px 0;
+    line-height: 1.6;
+    color: #374151;
+}
+
+.preview-section .preview-diagram ul {
+    list-style-type: disc;
+}
+
+.preview-section .preview-diagram ol {
+    list-style-type: decimal;
+}
+
+.preview-section .preview-diagram ul ul,
+.preview-section .preview-diagram ol ol,
+.preview-section .preview-diagram ul ol,
+.preview-section .preview-diagram ol ul {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+/* Markdown code blocks */
+.preview-section .preview-diagram pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 16px 0;
+}
+
+.preview-section .preview-diagram pre code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    color: inherit;
+    font-size: inherit;
+    white-space: pre;
+    word-wrap: normal;
+    display: block;
+}
+
+.preview-section .preview-diagram code {
+    background: #f1f5f9;
+    color: #dc2626;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* Markdown blockquotes */
+.preview-section .preview-diagram blockquote {
+    border-left: 4px solid #3b82f6;
+    padding-left: 16px;
+    margin: 16px 0;
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* Markdown horizontal rules */
+.preview-section .preview-diagram hr {
+    border: none;
+    border-top: 2px solid #e5e7eb;
+    margin: 24px 0;
+}
+
+/* Markdown links */
+.preview-section .preview-diagram a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.preview-section .preview-diagram a:hover {
+    text-decoration: underline;
+}
+
+/* Markdown strong and emphasis */
+.preview-section .preview-diagram strong {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.preview-section .preview-diagram em {
+    font-style: italic;
+}

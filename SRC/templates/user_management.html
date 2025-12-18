@@ -1,0 +1,102 @@
+{% extends "commons/base.html" %}
+
+{% block title %}setting users - DocifyCode{% endblock %}
+
+{% block additional_css %}
+<link rel="stylesheet" href="/static/css/user_management.css">
+<meta name="max-length-email" content="{{ MAX_LENGTH_EMAIL }}">
+<meta name="max-length-name" content="{{ MAX_LENGTH_NAME }}">
+<meta name="max-length-pass" content="{{ MAX_LENGTH_PASS }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Header Section -->
+    <div class="header">
+        <h1>ユーザ管理</h1>
+    </div>
+
+    <!-- Search and Action Section -->
+    <div class="search-action-section">
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input"
+                placeholder="検索...">
+            <button id="searchBtn" class="btn btn-primary">検索</button>
+        </div>
+        <div class="action-container">
+            <button id="addUserBtn" class="btn btn-primary">ユーザー追加</button>
+        </div>
+    </div>
+
+    <!-- Users Table -->
+    <div class="table-container">
+        <table class="users-table">
+            <thead>
+                <tr class="table-header">
+                    <th>メールアドレス</th>
+                    <th>ユーザー名</th>
+                    <th>作成日</th>
+                </tr>
+            </thead>
+            <tbody id="usersTableBody">
+                <!-- Users will be loaded here dynamically -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add User Modal -->
+<div id="addUserModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>ユーザーを作成</h2>
+        </div>
+        <div class="modal-body">
+            <form id="addUserForm">
+                <div class="form-group">
+                    <label for="userName">ユーザー名</label>
+                    <input type="text" id="userName" name="userName"
+                        placeholder="ユーザー名を入力" maxlength="{{ MAX_LENGTH_NAME }}"
+                        required>
+                    <div class="error-message" id="userNameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">メールアドレス</label>
+                    <input type="email" id="userEmail" name="userEmail"
+                        placeholder="メールアドレスを入力"
+                        maxlength="{{ MAX_LENGTH_EMAIL }}" required>
+                    <div class="error-message" id="userEmailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="userPassword">新しいパスワード</label>
+                    <input type="password" id="userPassword" name="userPassword"
+                        placeholder="新しいパスワードを入力 (8文字以上)"
+                        maxlength="{{ MAX_LENGTH_PASS }}" required>
+                    <div class="error-message" id="userPasswordError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="userPasswordConfirm">パスワードの確認</label>
+                    <input type="password" id="userPasswordConfirm"
+                        name="userPasswordConfirm" placeholder="もう一度パスワードを入力"
+                        maxlength="{{ MAX_LENGTH_PASS }}" required>
+                    <div class="error-message"
+                        id="userPasswordConfirmError"></div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary"
+                id="cancelAddUser">Cancel</button>
+            <button type="button" class="btn btn-primary"
+                id="confirmAddUser">OK</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block additional_js %}
+<!-- <script src="/static/js/commons/util.js"></script> -->
+<script src="/static/js/commons/auth.js"></script>
+<script type="module" src="/static/js/user_management.js"></script>
+{% endblock %}

@@ -1,0 +1,385 @@
+/* Container */
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+/* Tab Section */
+.tab-section {
+    display: flex;
+    gap: 10px;
+    border-bottom: 2px solid #d3d2d2;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.tab-btn {
+    padding: 10px 24px;
+    background: #F6F8FA;
+    border: 2px solid #d3d2d2;
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    z-index: 0;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #1a202c;
+    border-color: #d3d2d2;
+    z-index: 2;
+    margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+    background: #edf2f7;
+    color: #2d3748;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Group Form Section */
+.group-form-section {
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0A0909;
+    margin: 0 0 10px 0;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.role-selection {
+    display: flex;
+    gap: 15px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    color: #0A0909;
+}
+
+.radio-label input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #3C69E2;
+}
+
+.group-name-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.group-name-input:focus {
+    outline: none;
+    border-color: #27ae60;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+.group-name-input::placeholder {
+    color: #a0aec0;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #3C69E2;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3264f0;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: #A59B99;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #99908e;
+}
+
+.btn-secondary:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-danger:hover {
+    background: #536083;
+}
+
+/* Table Container */
+.table-container {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+/* Groups Table */
+.groups-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.groups-table thead {
+    border-bottom: 2px solid #d3d2d2;
+    border-top: 2px solid #d3d2d2;
+}
+
+.groups-table th {
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.groups-table tbody tr {
+    border-bottom: 2px solid #d3d2d2;
+    transition: background-color 0.2s ease;
+}
+
+.groups-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.groups-table td {
+    padding: 15px 20px;
+    color: #000000;
+    font-size: 14px;
+}
+
+.groups-table td:first-child {
+    color: #000000;
+}
+
+.btn-delete {
+    border: none;
+    background: transparent;
+    padding: 0; 
+    cursor: pointer;
+}
+
+.btn-delete:focus {
+    outline: none;
+}
+
+.btn-delete:hover {
+    opacity: 0.7;
+    transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideIn 0.3s ease;
+}
+
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: none;
+}
+
+.modal-header h2 {
+    font-size: 20px;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.modal-body {
+    padding: 25px;
+    text-align: center;
+    font-size: 14px;
+    color: #34495e;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 0 25px 20px 25px;
+}
+
+.modal-footer .btn {
+    width: 100px;                
+    padding: 12px 0;               
+    font-size: 14px;
+    display: flex;                
+    align-items: center;         
+    justify-content: center;    
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Loading Overlay */
+/* Loading styles are defined in base.css */
+
+.loading-text {
+    margin-top: 1rem;
+    color: #4a5568;
+    font-size: 1rem;
+}
+
+/* Alert Styles */
+.alert-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1500;
+}
+
+.alert {
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideInRight 0.3s ease;
+    max-width: 400px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 4px solid #27ae60;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #e74c3c;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-left: 4px solid #f39c12;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-left: 4px solid #3498db;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .role-selection {
+        width: 100%;
+    }
+
+    .group-name-input {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .groups-table {
+        font-size: 12px;
+    }
+
+    .groups-table th,
+    .groups-table td {
+        padding: 13px 15px;
+    }
+
+    .alert-container {
+        right: 15px;
+        left: 15px;
+        max-width: none;
+    }
+}

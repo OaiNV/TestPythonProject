@@ -1,0 +1,46 @@
+{% extends "commons/base.html" %} {% from "commons/action-button.html" import
+action_button %} {% from "commons/code-preview.html" import code_preview %} {%
+from 'commons/sidebar.html' import sidebar_branch %} {% from
+'commons/repo-info-bar.html' import repo_info_bar %} {% from
+'commons/panel-tabs.html' import panel_tabs %} {% block title %}Requirement
+Document Detail - DocifyCode{% endblock %} {% block additional_css %}
+<link rel="stylesheet" href="/static/css/commons.css" />
+<link rel="stylesheet" href="/static/css/rd_detail.css" />
+<link rel="stylesheet" href="/static/css/filelist.css" />
+{% endblock %} {% block content %}
+<div class="main-content">
+  <!-- Repository Info Bar (below navbar) -->
+  {{ repo_info_bar( back_btn_id='backBtn', file_name_id='fileName',
+  repo_name_id='repoName', branch_name_id='branchName',
+  update_date_id='updateDate' ) }}
+
+  <div class="rd-container">
+    <!-- Left Panel -->
+    <div class="rd-left-panel">
+      <!-- Tabs Section -->
+      {{ panel_tabs( tabs=[{'id':
+      'tabGit', 'data_tab': 'tabContent-git', 'text': 'Git', 'active': True} ],
+      tabs_class='rd-tabs', tab_class='rd-tab' ) }}
+      <div class="rd-left-panel-content">
+        <!-- Git Tab Content (only shown in Git tab) -->
+        <div class="rd-git-content" id="rdGitContent" style="display: none">
+          {{ sidebar_branch( file_list_id='gitFileList', show_sort_btn=True,
+          show_pull_btn=True ) }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="rd-main-content">
+      <!-- Code and Preview Layout (Fixed, always visible) -->
+      {{ code_preview( code_id='rdCodeEditor', preview_id='rdPreview',
+      code_title='Code', preview_title='Preview' ) }}
+    </div>
+  </div>
+</div>
+{% endblock %} {% block additional_js %}
+<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+<script src="/static/js/commons/auth.js"></script>
+<script src="/static/js/commons/markdown_image_resolver.js"></script>
+<script type="module" src="/static/js/file_detail/requirement_design_detail.js"></script>
+{% endblock %}

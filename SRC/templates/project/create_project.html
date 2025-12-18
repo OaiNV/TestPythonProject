@@ -1,0 +1,64 @@
+{% extends "project/create_project_base.html" %}
+
+{% block page_title %}アクセス権限{% endblock %}
+
+{% block header_title %}プロジェクト作成{% endblock %}
+
+{% block left_panel_extra %}
+<!-- Starting Point Section -->
+<div class="section">
+    <div class="section-header" id="startingSection">
+        <div class="section-icon">
+            <img src="/static/images/location-icon.svg" width="32" height="32"
+                alt="Location">
+        </div>
+        <span>起点</span>
+    </div>
+    <div class="setting-form-block">
+        <div class="form-row-setting">
+            <label>起点を選択：</label>
+            <select id="baseSpecification" class="form-select">
+                <option value="requirement">要件定義書</option>
+                <!-- <option value="basic_design">基本設計書</option> -->
+                <option value="source_code">ソースコード</option>
+            </select>
+        </div>
+        <div id="uploadSection" class="upload-container" style="display: none;">
+            <div class="form-row-setting">
+                <label></label>
+                <button id="uploadBtn" class="btn btn-upload">
+                    <img src="/static/images/upload-icon.svg" width="20"
+                        height="20" alt="Upload">
+                    ファイル選択
+                </button>
+                <input type="file" id="fileInput" multiple
+                    accept=".md,.png,.jpg,.jpeg" style="display: none;">
+            </div>
+        </div>
+        <div id="gitSection" class="form-row-git" style="display: none;">
+            <label></label>
+            <div class="input-with-text-git">
+                <span class="input-label-git">Git設定</span>
+                <input type="text" id="gitSettings" class="form-input-git">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block right_panel_extra %}
+<!-- Registered Files Section -->
+<div id="registeredFilesSection" class="section" style="display: none;">
+    <div class="registered-file-wrap">
+        <div class="file-list-header">登録ファイル一覧</div>
+        <div id="registeredFilesList" class="file-list">
+            <div class="file-item">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_specific_js %}
+<script type="module" src="/static/js/project/create_project.js"></script>
+{% endblock %}

@@ -1,0 +1,193 @@
+{% extends "commons/base.html" %}
+{% from "commons/action-button.html" import action_button %}
+{% from "commons/code-preview.html" import code_preview, code_section %}
+{% from 'commons/sidebar.html' import sidebar_branch %}
+{% from 'commons/repo-info-bar.html' import repo_info_bar %}
+{% from 'commons/panel-tabs.html' import panel_tabs %}
+
+{% block title %}Source Code - DocifyCode{% endblock %}
+
+{% block additional_css %}
+<link rel="stylesheet" href="/static/css/commons.css">
+<link rel="stylesheet" href="/static/css/rd_detail.css">
+<link rel="stylesheet" href="/static/css/source_detail.css">
+<link rel="stylesheet" href="/static/css/filelist.css">
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <!-- Repository Info Bar (below navbar) -->
+    {{ repo_info_bar(
+    back_btn_id='backBtn',
+    file_name_id='fileName',
+    repo_name_id='repoName',
+    branch_name_id='branchName',
+    update_date_id='updateDate'
+    ) }}
+
+    <div class="rd-container">
+        <!-- Left Panel -->
+        <div class="rd-left-panel">
+            <!-- Tabs Section (Code / Batch Processing / Git) -->
+            {{ panel_tabs(
+            tabs=[
+            {'id': 'tabCode', 'data_tab': 'tabContent-code', 'text': 'Code', 'active': True},
+            {'id': 'tabGit', 'data_tab': 'tabContent-git', 'text': 'Git', 'active': False}
+            ],
+            tabs_class='rd-tabs',
+            tab_class='rd-tab'
+            ) }}
+
+            <div class="rd-left-panel-content">
+                <!-- Code Tab Content -->
+                <div class="rd-tab-content active" id="tabContent-code" style="display: block;">
+                    <div class="code-tree-wrapper code-tree simple-scroll" id="codeNavigatorList">
+                        <!-- File structure populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Batch Processing Tab Content -->
+                <div class="rd-tab-content" id="tabContent-batchProcessing" style="display: none;">
+                    <div class="rd-action-section" id="rdActionSection">
+                        {{ action_button(button_id='generateDetailedDesignBtn', button_text='詳細設計書生成') }}
+                        {{ action_button(button_id='generateUnitTestSpecBtn', button_text='単体試験仕様書生成') }}
+                        {{ action_button(button_id='generateUnitTestCodeBtn', button_text='単体試験コード生成') }}
+                    </div>
+                </div>
+
+                <!-- Git Tab Content -->
+                <div class="rd-tab-content" id="tabContent-git" style="display: none;">
+                    <div class="rd-git-content" id="rdGitContent">
+                        {{ sidebar_branch(
+                        file_list_id='gitFileList',
+                        show_sort_btn=True,
+                        show_pull_btn=True,
+                        show_push_btn=True
+                        ) }}
+
+                        <!-- Make Issue Section -->
+                        <div class="issue-section">
+                            <h4 class="issue-title"><img src="/static/images/robot.svg" alt="Robot" width="20px"
+                                    height="20px">Make Issue</h4>
+                            <input type="text" class="issue-input-title" id="issueTitle" placeholder="タイトル">
+                            <textarea class="issue-input-area" id="issueContent" placeholder="説明" rows="4"></textarea>
+                            <button class="btn-submit-issue" id="submitIssueBtn">
+                                <img src="/static/images/send-icon.svg" alt="Submit New Issue" width="18px"
+                                    height="18px">Submit New Issue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="rd-main-content">
+            <div class="code-preview-container">
+                <!-- Code Section (Left) - Using macro -->
+                {{ code_section(
+                code_id='rdCodeEditor',
+                code_title='Code'
+                ) }}
+
+                <!-- Right: Preview with Tabs -->
+                <div class="preview-section" id="previewSection">
+
+                    <!-- Tabs -->
+                    {{ panel_tabs(
+                    tabs=[
+                    {'id': 'tabPD', 'data_tab': 'pdContent', 'text': 'PD', 'active': True},
+                    {'id': 'tabUTD', 'data_tab': 'utdContent', 'text': 'UTD', 'active': False},
+                    {'id': 'tabUTC', 'data_tab': 'utcContent', 'text': 'UTC', 'active': False}
+                    ],
+                    tabs_class='rd-tabs preview-panel-tabs',
+                    tab_class='rd-tab preview-panel-tab'
+                    ) }}
+
+                    <!-- Content Wrapper -->
+                    <div class="rd-left-panel-content preview-panel-content">
+                        <div class="preview-action-btn-group">
+                            <button class="preview-action-btn" id="reloadPreviewBtn" title="Reload Preview">
+                                <span class="material-symbols-outlined" style="font-size: 17px;">autorenew</span>
+                            </button>
+                            <button class="preview-action-btn" id="expandPreviewBtn" title="Expand Preview">
+                                <span class="material-symbols-outlined" style="font-size: 16px;">open_in_full</span>
+                            </button>
+                        </div>
+
+                        <!-- PD Tab -->
+                        <div class="rd-tab-content active" id="pdContent" style="display: block;">
+                            <div class="preview-section-item">
+                                <h4 class="preview-section-title">クラス説明</h4>
+                                <div class="preview-diagram" id="classDescription">
+                                    <div class="empty-state">クラス説明がありません</div>
+                                </div>
+                            </div>
+
+                            <div class="preview-section-item">
+                                <h4 class="preview-section-title">メソッド設計</h4>
+                                <div class="preview-diagram" id="methodDesign">
+                                    <div class="empty-state">メソッド設計がありません</div>
+                                </div>
+                            </div>
+
+                            <div class="preview-section-item">
+                                <h4 class="preview-section-title">インターフェース設計(レンダリング)</h4>
+                                <div class="preview-diagram" id="interfaceDesign">
+                                    <div class="empty-state">インターフェースデザインがありません</div>
+                                </div>
+                            </div>
+
+                            <div class="preview-section-item">
+                                <h4 class="preview-section-title">アクティビティ図(レンダリング)</h4>
+                                <div class="preview-diagram" id="activityDiagram">
+                                    <div class="empty-state">図がありません</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UTD Tab -->
+                        <div class="rd-tab-content" id="utdContent" style="display: none;">
+                            <div class="preview-section-item">
+                                <h4 class="preview-section-title">デシジョンテーブルとテストパターン</h4>
+                                <div class="preview-diagram" id="decisionJSON">
+                                    <div class="empty-state">決定表とテストサンプルがありません</div>
+                                </div>
+                            </div>
+
+                            <div class="preview-section-item">
+                                <h4 class="preview-section-title">デシジョンテーブル(レンダリング)</h4>
+                                <div class="preview-diagram" id="decisionTable">
+                                    <div class="empty-state">テーブルがありません</div>
+                                </div>
+                            </div>
+
+                            <div class="preview-section-item">
+                                <h4 class="preview-section-title">テストパターン(レンダリング)</h4>
+                                <div class="preview-diagram" id="testPattern">
+                                    <div class="empty-state">パターンがありません</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UTC Tab -->
+                        <div class="rd-tab-content" id="utcContent" style="display: none;">
+                            <div class="preview-section-item">
+                                <h4 class="preview-section-title">単体試験コード</h4>
+                                <div class="preview-diagram" id="unitTestCode">
+                                    <div class="empty-state">テストコードがありません</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_js %}
+<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+<script src="/static/js/commons/auth.js"></script>
+<script type="module" src="/static/js/file_detail/source_code/source_detail.js"></script>
+{% endblock %}

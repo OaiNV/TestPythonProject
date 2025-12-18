@@ -1,0 +1,14 @@
+{% extends "project/create_project_base.html" %}
+
+{% block additional_css %}
+{{ super() }} {# giữ các CSS từ base #}
+<link rel="stylesheet" href="/static/css/update_project.css" />
+{% endblock %}
+
+{% block page_title %}プロジェクト編集{% endblock %}
+
+{% block header_title %}プロジェクト編集{% endblock %}
+
+{% block page_specific_js %}
+<script type="module" src="/static/js/project/update_project.js"></script>
+{% endblock %}

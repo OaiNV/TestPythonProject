@@ -1,0 +1,110 @@
+# =========================================================
+
+# 🧩 CEC Coding Rules - v1
+
+# Author: DaiScuti
+
+# Description: Standard rules enforced by Cursor for all codebases
+
+# =========================================================
+
+rules:
+
+- name: General Coding Style
+  description: |
+  Keep code short, clear, and readable.
+
+  - Each function should not exceed 30 _effective_ lines of logic.  
+     (Blank lines and logging statements do **not** count toward this limit.)
+  - If a function exceeds that limit → split it into smaller, more focused functions.
+  - Every function must include a try/catch (or try/except) block.
+  - Prefer async/await instead of callback or promise chaining.
+  - Follow SOLID principles where applicable.
+  - Add short comments to explain any complex or non-obvious logic.
+  - Inside a function:
+    - If you access the same value multiple times (e.g., user["login_id"]), define a local variable once and reuse it.
+    - Always include at least one input validation check (guard clause) at the beginning.
+  - Use `#region` and `#endregion` comments to organize **public** and **private** function sections clearly.
+  - Function: verb_noun (get_user, create_invoice)
+  - Boolean: is_, has_, should_
+  - Class: PascalCase
+  - Constant: UPPER_SNAKE_CASE
+  - Private function: prefix `_` in Python, no prefix in TS
+
+
+- name: Constants & Config Placement
+  description: |
+    - All constants, configuration variables, and global settings must be declared at the top of the file.
+    - Use uppercase with underscores for constants (e.g., `MAX_RETRIES = 3`).
+    - Config objects should be clearly separated and grouped together.
+    - Avoid scattering constants or config values throughout the code; centralize them at the beginning for clarity and maintainability.
+    - This applies to both Python (module-level constants) and TypeScript (const or enum at the top).
+
+
+- name: Logging & Error Handling
+  description: |
+
+  - Log at three key points: function start, during important steps, and on completion.
+  - Logs must include context (function name + key identifiers such as user_id, file_name, etc.).
+  - On error: log the full error message, then re-raise or handle it appropriately.
+  - Use consistent log levels:
+    - info: when starting and on success
+    - error: for exceptions or failed processes
+
+  ✅ Example (Python):
+
+  async def fetch_user_data(user_id: str):
+  if not user_id:
+  raise ValueError("INVALID_INPUT")
+  try:
+  res = await api.get(f"/users/{user_id}")
+  return res.data
+  except Exception as e:
+  logger.error(f"[fetch_user_data] Error - user_id={user_id}: {e}")
+  raise
+
+- name: Code Structure
+  description: |
+
+  - Functions longer than 30 lines must be refactored.
+  - Repeated logic should be moved into helper or utility functions.
+  - Use type/interface (TypeScript) or dataclass/pydantic (Python) for clear input/output definitions.
+  - Avoid deep property chains (e.g., user["info"]["profile"]["id"]); extract intermediate variables instead.
+  - Private functions must be placed at the bottom of the file.
+
+- name: Testing & Maintainability
+  description: |
+
+  - Code must be testable and avoid hardcoded values (except mock samples).
+  - Always validate inputs and provide default values when needed.
+  - Every function must have at least one corresponding test once completed.
+  - All test files should be placed inside a dedicated /tests folder.
+  - Prioritize unit tests first, then integration tests.
+
+- name: Multi-project Adaptability
+  description: |
+
+  - If no framework is specified, assume TypeScript + Node.js as the default stack.
+  - If a specific framework is mentioned (React Native, FastAPI, Next.js, etc.), follow its conventions.
+  - Do not write code that depends on other frameworks unless explicitly required.
+  
+- name: Single Responsibility Principle
+  description: |
+    - **Each function must do exactly one thing.**
+    - A function that performs more than one responsibility (e.g., validates input + fetches data + transforms output + writes to DB) must be split.
+    - The function name should clearly describe its single responsibility.
+    - A function that has more than one reason to change violates SRP.
+
+- name: Example Function Template
+  description: |
+  ✅ Python
+  async def example_function(data: dict):
+  if not data or 'id' not in data:
+  raise ValueError("INVALID_INPUT")
+  try:
+  item_id = data['id']
+  result = await process_item(item_id)
+  return result
+  except Exception as e:
+  logger.error(f"[example_function] Error - item_id={data.get('id')}: {e}")
+  raise
